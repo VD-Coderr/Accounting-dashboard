@@ -1,0 +1,19 @@
+*,
+*:before,
+*:after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  font-size: 62.5%;
+  --color-background: rgb(19, 24, 32);
+  --color-form-background: rgb(34, 42, 48);
+  --color-heading: rgba(255, 255, 255, 0.95);
+  --color-text: rgba(255, 255, 255, 0.9);
+  --color-cta: rgba(17, 139, 167, 0.9);
+  --font-heading: 100 5.2rem 'Chivo', sans-serif, Courier, monospace;
+  --font-text: 2rem 'Krub', sans-serif, Courier, monospace;
+}
+
