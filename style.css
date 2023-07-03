@@ -1,3 +1,4 @@
+/* Boilerplate */
 *,
 *:before,
 *:after {
@@ -6,8 +7,9 @@
   box-sizing: border-box;
 }
 
+/* Variables */
 :root {
-  font-size: 62.5%;
+  font-size: 62.5%; /* sets 1rem = 10px */
   --color-background: rgb(19, 24, 32);
   --color-form-background: rgb(34, 42, 48);
   --color-heading: rgba(255, 255, 255, 0.95);
@@ -15,5 +17,115 @@
   --color-cta: rgba(17, 139, 167, 0.9);
   --font-heading: 100 5.2rem 'Chivo', sans-serif, Courier, monospace;
   --font-text: 2rem 'Krub', sans-serif, Courier, monospace;
+  --spacing: 10px;
 }
 
+/* Layout */
+body {
+  font: var(--font-text);
+  display: grid;
+  grid-template-columns: 50px 1fr;
+  grid-template-rows: repeat(3, 5rem) 1fr 5rem;
+}
+
+.wrapper {
+  padding: var(--spacing);
+}
+
+header {
+  grid-area: 1 / 2 / 2 / -1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav.sidebar {
+  grid-area: 1 / 1 / -1 / 2;
+}
+
+header {
+  #nav {
+    display: flex;
+    list-style: none;
+  }
+
+  #name {
+    display: flex;
+    align-items: center;
+
+    & p {
+      font-size: 1.6rem;
+      margin-left: var(--spacing);
+    }
+  }
+}
+
+#page-id {
+  grid-area: 2 / 2 / 3 / -1;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  margin-bottom: var(--spacing);
+
+  & h3 {
+    margin-right: auto;
+  }
+}
+
+#analysis-selector {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing);
+  margin-bottom: var(--spacing);
+}
+
+#dashboard {
+  grid-area: 4 / 2 / 5 / -1;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: calc(var(--spacing) * 2);
+
+}
+
+.tiles-container {
+  display: grid;
+  grid-template-rows: 5rem 1fr 5rem;
+  border: 1px solid black;
+
+  & .header {
+    grid-row: 1 / 2;
+  }
+
+  & .content {
+    grid-row: 2 / 3;
+  }
+
+  & .footer {
+    grid-row: 3 / 4 ;
+  }
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.content {
+  position: relative;
+}
+.content iframe{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  & img {
+    height: 2ex;
+  }
+}
