@@ -124,3 +124,19 @@ header {
   }
 }
 
+.cards {
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  top: calc(100vh - 4ex);
+  left: 70px;
+  border: 1px solid black;
+  height: 50vh;
+  /* width of main section - sidebar */
+  width: calc(100% - 70px); 
+  padding-top: 5px;
+  
+  & img {
+    height: 3ex;
+  }
+}
