@@ -74,7 +74,7 @@ header {
 
 #nav li {
   /* styling */
-  padding: var(--spacing);
+  padding: 0 min(var(--spacing), 1vw);
   transition: ease-in-out 0.3s ;
 
   &:not(:last-child) {
@@ -219,5 +219,11 @@ button#edit {
   height: 20px;
   & img {
     height: 25px;
+  }
+}
+
+@media(max-width: 1100px) {
+  #name p {
+    display: none;
   }
 }
