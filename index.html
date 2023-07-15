@@ -37,7 +37,13 @@
 
   <section id="page-id">
     <h3>Home</h3>
-    <p id="dashboard-version">Dashboard: New version</p>
+
+    <label for="dashboard-version">Dashboard: </label>
+    <select name="dashboard-version" id="dashboard-version">
+      <option value="new">New version</option>
+      <option value="old">Old version</option>
+    </select>
+
     <button id="edit">Edit</button>
   </section>
 
@@ -96,8 +102,11 @@
   </main>
 
   <section class="cards">
-    <h3>Select a card</h3>
-    <img src="images/arrow-up.svg" alt="Up">
+    <div class="header">
+      <h3>Select a card</h3>
+      <button id="cards-btn"><img src="images/arrow-up.svg" alt="Up"></button>
+    </div>
+    <p>This section is coming soon. Trust me...</p>
   </section>
 </body>
 </html>

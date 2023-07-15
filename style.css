@@ -10,11 +10,11 @@
 /* Variables */
 :root {
   font-size: 62.5%; /* sets 1rem = 10px */
-  --color-background: rgb(19, 24, 32);
-  --color-form-background: rgb(34, 42, 48);
-  --color-heading: rgba(255, 255, 255, 0.95);
-  --color-text: rgba(255, 255, 255, 0.9);
-  --color-cta: rgba(17, 139, 167, 0.9);
+  --color-background-blue: #172554;
+  --color-svg-light: invert(79%) sepia(41%) saturate(10%) hue-rotate(176deg) brightness(111%) contrast(105%);
+  --color-light-blue: #dbeafe;
+  --box-shadow: 5px 5px 15px -5px #d6d3d1;
+  --box-shadow-inset: inset 0px 5px 15px 0px #d6d3d1;
   --font-heading: 100 5.2rem 'Chivo', sans-serif, Courier, monospace;
   --font-text: 2rem 'Krub', sans-serif, Courier, monospace;
   --spacing: 10px;
@@ -25,7 +25,7 @@ body {
   font: var(--font-text);
   display: grid;
   grid-template-columns: 70px 1fr;
-  grid-template-rows: repeat(3, 5rem) 1fr 5rem;
+  grid-template-rows: repeat(3, 5rem) 1fr;
 }
 
 body > * {
@@ -37,10 +37,19 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  box-shadow: var(--box-shadow);
 }
 
 nav.sidebar {
   grid-area: 1 / 1 / -1 / 2;
+  min-height: 100vh;
+  padding-top: var(--spacing);
+  /* style */
+  background-color: var(--color-background-blue);
+  & img {
+    filter: var(--color-svg-light);
+  }
+
 }
 
 header {
@@ -57,8 +66,26 @@ header {
       font-size: 1.6rem;
       margin-left: var(--spacing);
     }
+
+    /* styling */
+    color: #92400e;
   }
 }
+
+#nav li {
+  /* styling */
+  padding: var(--spacing);
+  transition: ease-in-out 0.3s ;
+
+  &:not(:last-child) {
+    border-right: 1px solid var(--color-background-blue);
+  }
+
+  &:hover {
+    background-color: var(--color-light-blue);
+  }
+}
+
 
 #page-id {
   grid-area: 2 / 2 / 3 / -1;
@@ -66,9 +93,34 @@ header {
   justify-content: end;
   align-items: center;
   margin-bottom: var(--spacing);
-
   & h3 {
     margin-right: auto;
+  }
+}
+
+#dashboard-version {
+  /* styling */
+  border: none;
+  font: var(--font-text);
+}
+
+button#edit {
+  font: var(--font-text);
+  border: 1px solid var(--color-background-blue);
+  border-radius: 10px;
+  padding: 0 var(--spacing);
+  margin: var(--spacing);
+  color: var(--color-background-blue);
+  background-color: transparent;
+  transition: ease-in-out 0.1s ;
+
+  &:hover {
+    background-color: var(--color-light-blue);
+  }
+
+  &:active {
+    background-color: var(--color-background-blue);
+    color: var(--color-light-blue);
   }
 }
 
@@ -77,6 +129,10 @@ header {
   align-items: center;
   gap: var(--spacing);
   margin-bottom: var(--spacing);
+
+  & p:last-child {
+    border-bottom: 3px solid var(--color-background-blue);
+  }
 }
 
 #dashboard {
@@ -84,59 +140,84 @@ header {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: calc(var(--spacing) * 2);
+  height: fit-content;
 
+  /* styling */
+  box-shadow: var(--box-shadow-inset);
+  padding-top: var(--spacing);
 }
 
 .tiles-container {
   display: grid;
   grid-template-rows: 5rem 1fr 5rem;
-  border: 1px solid black;
-
+  border-radius: 25px;
+  background: #ffffff;
+  box-shadow:  6px 6px 15px #cccccc,
+               -6px -6px 15px #ffffff;
   & .header {
     grid-row: 1 / 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   & .content {
     grid-row: 2 / 3;
+    & img {
+    width: 100%;
+    }
   }
 
   & .footer {
     grid-row: 3 / 4 ;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    & img {
+      height: 2ex;
+    }
   }
 }
 
-.header {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.content img{
-  width: 100%;
-}
-
-.footer {
-  display: flex;
-  align-items: center;
-  justify-content: end;
-  & img {
-    height: 2ex;
-  }
-}
 
 .cards {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   position: absolute;
   top: calc(100vh - 4ex);
   left: 70px;
-  border: 1px solid black;
-  height: 50vh;
-  /* width of main section - sidebar */
-  width: calc(100% - 70px); 
+  border: 1px solid #d6d3d1;
+  height: 4ex;
+  overflow: hidden;
+  width: calc(100% - 70px);   /* width of main section - sidebar */
   padding-top: 5px;
-  
+
+  & .header {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  /* styling */
+  background-color: white;
+  transition: ease-out 0.3s;
+  & p {
+    font: var(--font-heading);
+  }
+
+  &:hover {
+    height: 100px;
+    transform: translateY(calc(-100px + 4ex));
+  }
+}
+
+
+.cards button {
+  height: fit-content;
+  border: none;
+  padding: 0 var(--spacing);
+  background-color: transparent;
+  height: 20px;
   & img {
-    height: 3ex;
+    height: 25px;
   }
 }
